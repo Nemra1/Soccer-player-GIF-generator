@@ -11,7 +11,6 @@ function renderButtons() {
         newButton.attr("data-name", topics[i]);
         newButton.text(topics[i]);
         $("#giphy-buttons").append(newButton);
-
     }
 }
 
@@ -25,14 +24,13 @@ $(".btn-primary").on("click", function (event) {
     // adding new player button to topics array
     topics.push(newPlayerButton);
     renderButtons();
-
 })
 
 // click function for our buttons
 $(".player-button").on("click", function (event) {
 
     event.preventDefault();
-    
+
     // var to store data name attr for clicked player button
     var player = $(this).attr("data-name");
     // query url for ajax call
@@ -44,7 +42,7 @@ $(".player-button").on("click", function (event) {
     }).then(function (response) {
         // append still image to the giphy buttons div
         console.log(response)
-        // loops to display 10 GIFs each time a player button is clicked
+        // loop to display 10 GIFs each time a player button is clicked
         for (i = 0; i < 10; i++) {
             // store the gif path in a variable with an image tag
             var stillGIF = $("<img>").attr("src", response.data[i].images.fixed_height_still.url);
@@ -57,6 +55,5 @@ $(".player-button").on("click", function (event) {
     });
 
 })
-
 
 
