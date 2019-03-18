@@ -47,7 +47,14 @@ $(document).on("click", ".player-button", function (event) {
 
             // store the gif path in a variable with an image tag
             var stillGIF = $("<img>").attr("src", response.data[i].images.fixed_height_still.url);
+            // give stillGIF a class of "gif"
+            stillGIF.addClass("gif");
+            // add attributes to stillGIF
+            stillGIF.attr("data-state", "still");
+
+            stillGIF.attr("data-animate", response.data[i].images.fixed_height.url)
             // add p tag to hold our rating
+            stillGIF.attr("data-still", response.data[i].images.fixed_height_still.url )
             var gifRating = $("<p>").text("Rating: " + response.data[i].rating)
             // append the still gif and rating to the giphy div
             $("#giphy-div").append(stillGIF, gifRating);
@@ -57,4 +64,17 @@ $(document).on("click", ".player-button", function (event) {
 
 })
 
+$(document.body).on("click",".gif", function (event) {
+    event.preventDefault();
+
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+});
 
