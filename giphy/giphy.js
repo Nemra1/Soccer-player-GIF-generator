@@ -27,7 +27,7 @@ $(".btn-primary").on("click", function (event) {
 })
 
 // click function for our buttons
-$(".player-button").on("click", function (event) {
+$(document).on("click", ".player-button", function (event) {
 
     event.preventDefault();
 
@@ -44,6 +44,7 @@ $(".player-button").on("click", function (event) {
         console.log(response)
         // loop to display 10 GIFs each time a player button is clicked
         for (i = 0; i < 10; i++) {
+
             // store the gif path in a variable with an image tag
             var stillGIF = $("<img>").attr("src", response.data[i].images.fixed_height_still.url);
             // add p tag to hold our rating
