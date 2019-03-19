@@ -4,7 +4,7 @@ var topics = ["Lionel Messi", "Cristiano Ronaldo", "Zlatan Ibrahimovic", "Miguel
 function renderButtons() {
     // empty div before adding new buttons
     $("#giphy-buttons").empty();
-    // for loop to creat buttons for our toics
+    // for loop to creat buttons for our topics
     for (i = 0; i < topics.length; i++) {
         var newButton = $("<button>");
         newButton.addClass("player-button");
@@ -12,9 +12,9 @@ function renderButtons() {
         newButton.text(topics[i]);
         $("#giphy-buttons").append(newButton);
         newButton.css({
-            "background-color":"#007bff",
+            "background-color": "#007bff",
             "color": "white",
-            "margin":"10px",
+            "margin": "10px",
             "font-weight": "400",
             "border": "1px solid transparent",
             "padding": ".375rem .75rem",
