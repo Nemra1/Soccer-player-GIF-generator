@@ -11,6 +11,16 @@ function renderButtons() {
         newButton.attr("data-name", topics[i]);
         newButton.text(topics[i]);
         $("#giphy-buttons").append(newButton);
+        newButton.css({
+            "background-color":"#007bff",
+            "color": "white",
+            "margin":"10px",
+            "font-weight": "400",
+            "border": "1px solid transparent",
+            "padding": ".375rem .75rem",
+            "font-size": "1rem",
+            "border-radius": ".25rem"
+        })
     }
 }
 
@@ -54,7 +64,7 @@ $(document).on("click", ".player-button", function (event) {
 
             stillGIF.attr("data-animate", response.data[i].images.fixed_height.url)
             // add p tag to hold our rating
-            stillGIF.attr("data-still", response.data[i].images.fixed_height_still.url )
+            stillGIF.attr("data-still", response.data[i].images.fixed_height_still.url)
             var gifRating = $("<p>").text("Rating: " + response.data[i].rating)
             // append the still gif and rating to the giphy div
             $("#giphy-div").append(stillGIF, gifRating);
@@ -64,7 +74,7 @@ $(document).on("click", ".player-button", function (event) {
 
 })
 
-$(document.body).on("click",".gif", function (event) {
+$(document.body).on("click", ".gif", function (event) {
     event.preventDefault();
 
     var state = $(this).attr("data-state");
