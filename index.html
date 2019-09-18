@@ -15,15 +15,43 @@
 </head>
 
 <body>
-  
-  <div id="giphy-buttons">
-  </div>
-  <form>
-    <label class="sr-only" for="inlineFormInputName2">Name</label>
-    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Your favorite player">
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-  </form>
-  <div id="giphy-div">
+  <div class="background-wrapper overlay">
+
+    <nav class="navbar top-nav">
+      <div class="container">
+        <span class="nav-text navbar-center">
+          Welcome to the Footballer's Gif Generator!
+        </span>
+      </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h4 class="display-4 headline">Click the buttons for Gifs of your favorite players!</h4>
+        <p class="lead">Get started with our list of players or use the input field to create a new button for your
+          favorite footballer!
+        </p>
+        <form id="new-player-button">
+          <label class="sr-only" for="inlineFormInputName2">Name</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+            placeholder="Your favorite player">
+          <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
+        <div id="giphy-buttons">
+        </div>
+      </div>
+    </div>
+
+    <div class="button-wrapper">
+      <div id="giphy-div">
+      </div>
+    </div>
+
+    <footer id="sticky-footer" class="py-2 text-white-50 mt-4">
+      <div class="container text-center">
+        <small>Created by: Sam Lutz copyright &copy;</small>
+      </div>
+    </footer>
   </div>
 
   <!-- Optional JavaScript -->

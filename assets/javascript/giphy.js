@@ -1,5 +1,5 @@
 // var for our players
-const topics = ["Lionel Messi", "Cristiano Ronaldo", "Zlatan Ibrahimovic", "Miguel Almiron", "Pele", "Diego Maragona", "Neymar"];
+const topics = ["Lionel Messi", "Cristiano Ronaldo", "Wayne Rooney", "Miguel Almiron", "Pele", "Diego Maragona", "Neymar"];
 
 // function to render buttons
  renderButtons = () => {
@@ -25,9 +25,10 @@ const topics = ["Lionel Messi", "Cristiano Ronaldo", "Zlatan Ibrahimovic", "Migu
     }
 }
 
+// call the renderButtons function to render our buttons to the page
 renderButtons()
 
-// click function to add new buttons to the topics array
+// click function to add new buttons to the topics array on click of the submit button 
 $(".btn-primary").on("click", event => {
     event.preventDefault();
     // grab the input from textbox
@@ -41,6 +42,8 @@ $(".btn-primary").on("click", event => {
 $(document).on("click", ".player-button", function (event) {
 
     event.preventDefault();
+    // empty the gif div
+    $("#giphy-div").empty();
     // var to store data name attr for clicked player button
     const player = $(this).attr("data-name");
     // query url for ajax call
@@ -52,7 +55,10 @@ $(document).on("click", ".player-button", function (event) {
     }).then(function (response) {
         console.log(response)
         // loop to display 10 GIFs each time a player button is clicked
-        for (i = 0; i < 10; i++) {
+
+        for (i = 0; i < 4; i++) {
+            // create a new div for our chosen player
+            const playerDiv = $("<div class='player-item'>")
             // store the gif path in a variable with an image tag
             const stillGIF = $("<img>").attr("src", response.data[i].images.fixed_height_still.url);
             // give stillGIF a class of "gif"
@@ -66,9 +72,10 @@ $(document).on("click", ".player-button", function (event) {
             // add p tag to hold our rating
             const gifRating = $("<p>").text("Rating: " + response.data[i].rating)
             // append gif and rating to gifdiv 
-            $(".gif-div").append(stillGIF, gifRating);
+            // $(".gif-div").append(stillGIF, gifRating);
+            playerDiv.append(stillGIF)
             // append the still gif and rating to the giphy div
-            $("#giphy-div").append(stillGIF, gifRating);
+            $("#giphy-div").append(playerDiv);
         }
     });
 })
@@ -87,5 +94,4 @@ $(document.body).on("click", ".gif", function (event) {
         $(this).attr("data-state", "still");
     }
 });
-
 
